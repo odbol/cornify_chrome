@@ -1,5 +1,4 @@
-if (!window['cornify_defined']) {
-    window['cornify_defined'] = true;
+(function (exports) {
     var cornify = function () {
         var d = document,
             j = d.getElementById('__cornify_nodes'),
@@ -131,5 +130,6 @@ if (!window['cornify_defined']) {
             cornify();
         }
     );
-} else {
-}
+
+    exports.cornify = cornify;
+})(window);

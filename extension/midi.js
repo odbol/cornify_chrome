@@ -13,6 +13,17 @@
 
 ***/
 
+var noteOff = function (noteNumber) {},
+    noteOn = function (noteNumber, velocity) {
+        if (cornify) {
+          cornify();
+        }
+    },
+    controller = function (noteNumber, velocity) {},
+    pitchWheel = function (noteNumber, velocity) {};
+
+
+
 
 function midiMessageReceived( ev ) {
   var cmd = ev.data[0] >> 4;

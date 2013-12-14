@@ -1,7 +1,8 @@
 {
 "update_url":"http://clients2.google.com/service/update2/crx",
   "name": "Cornify!!",
-  "version": "10001",
+  "version": "10002",
+  "manifest_version": 2,
   "icons": {
     "48": "cornify_48.png",
     "128": "cornify_128.png"
@@ -11,7 +12,10 @@
     "default_icon": "cornify.ico"
   },
 
-  "background_page": "background.html",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
 
   "content_scripts": [
     {
@@ -24,5 +28,7 @@
     "tabs",
     "http://*/*",
     "https://*/*"
-  ]
+  ],
+
+  "web_accessible_resources": ["cornify.js", "midi.js"]
 }

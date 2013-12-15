@@ -12,16 +12,13 @@
     "default_icon": "cornify.ico"
   },
 
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": true
-  },
+ 
 
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["cornify.js"],
-      "run_at": "document_end"
+      "js": ["midi.js", "cornify.js"],
+      "run_at": "document_idle"
     }
   ],
   "permissions": [

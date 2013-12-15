@@ -1,4 +1,5 @@
 (function (exports) {
+  if (!exports.cornify) {
     var cornify = function () {
         var d = document,
             j = d.getElementById('__cornify_nodes'),
@@ -76,7 +77,7 @@
         }
         cornify_replace();
       } 
-    }
+    },
 
     cornify_replace = function() {
       // Replace text.
@@ -93,43 +94,26 @@
         }
         hc-=1;
       }
-    }
+    };
 
-    /*
-     * Adapted from http://www.snaptortoise.com/konami-js/
-     */
-    var cornami = {
-      input:"",
-      pattern:"38384040373937396665",
-      clear:setTimeout('cornami.clear_input()',5000),
-      load: function() {
-        window.document.onkeydown = function(e) {
-          if (cornami.input == cornami.pattern) {
-            cornify_add();
-            clearTimeout(cornami.clear);
-            return;
-          }
-          else {
-            cornami.input += e ? e.keyCode : event.keyCode;
-            if (cornami.input == cornami.pattern) cornify_add();
-            clearTimeout(cornami.clear);
-            cornami.clear = setTimeout("cornami.clear_input()", 5000);
-          }
-        }
-      },
-      clear_input: function() {
-        cornami.input="";
-        clearTimeout(cornami.clear);
-      }
-    }
+  
 
-    cornami.load();
+    exports.cornify = cornify;
 
+  
     chrome.extension.onRequest.addListener(
         function(request, sender, sendResponse) {
             cornify();
         }
     );
 
-    exports.cornify = cornify;
+    // start listening for midi on notes
+    if (midicorn) {
+      midicorn({
+        noteOn : function (noteNumber, velocity) {
+            cornify();
+          }
+      });
+    }
+  }
 })(window);

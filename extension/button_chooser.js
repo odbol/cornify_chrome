@@ -2,15 +2,42 @@
 (function (exports) {
   
 	if (!exports.buttonChooser) {
-		var onChoseButton = function (element) { 
+		var animateElement = function (el) {
+				var $el = jQuery(el);
+
+				$el.removeClass("drumpants_buttonHit");
+				$el.addClass("drumpants_buttonHit");
+
+				// wait for animation to complete, then reverse it.
+				setTimeout(function () {
+					$el.removeClass("drumpants_buttonHit");
+				}, 500); 
+			},
+			onChoseButton = function (element) { 
 				console.log('Clicked element:', element); 
+
+			// test animation by clicking anywhere
+			// $("body").click(function () {
+			// 	animateElement(element);
+			// });
 
 				var midiNote = prompt("Enter MIDI note to control this button: ", "*");
 				if (midiNote) {
 
-					if (midiNote == "*") {
-						// TODO: add listener to click the element
-					}
+					// TODO: add MIDI note on listener to click the element
+					midicorn({
+
+						noteOn: function (pitch, vel) {
+							
+							if (midiNote == "*" || pitch == midiNote) {
+								element.click();
+
+								animateElement(element);
+							}
+						}
+					});
+
+					// TODO: keep track of noteOn callbacks and clean them up when done!
 				}
 				
 				// Stop outline (also stopped on escape/backspace/delete keys):

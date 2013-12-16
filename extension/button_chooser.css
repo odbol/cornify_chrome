@@ -1,0 +1,10 @@
+.drumpants_buttonHit {
+	-webkit-box-shadow: 0 0 15px 5px rgba(209,184,57,0.8);
+	-moz-box-shadow: 0 0 15px 5px rgba(209,184,57,0.8);
+	box-shadow: 0 0 15px 5px rgba(209,184,57,0.8);
+
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all  0.3s ease-out;
+}

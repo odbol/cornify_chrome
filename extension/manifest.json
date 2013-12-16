@@ -21,6 +21,7 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["midi.js", "cornify.js"],
+      "css": ["button_chooser.css"],
       "run_at": "document_idle"
     }
   ],
@@ -35,6 +36,7 @@
     "midi.js",
 
     "button_chooser.js",
+    "button_chooser.css",
     "lib/jquery.js",
     "lib/jQuery.DomOutline/jquery.dom-outline-1.0.js"
   ]

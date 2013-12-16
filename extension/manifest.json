@@ -14,7 +14,7 @@
 
  "background": {
     "scripts": ["background.js"],
-    "persistent": false
+    "persistent": true
   },
 
   "content_scripts": [
@@ -40,6 +40,8 @@
     "lib/jquery.js",
     "lib/jQuery.DomOutline/jquery.dom-outline-1.0.js",
     "lib/backbone/underscore.js",
-    "lib/backbone/mustache.js"
+    "lib/backbone/mustache.js",
+
+    "sparkle.mp3"
   ]
 }

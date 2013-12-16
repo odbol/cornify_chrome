@@ -1,5 +1,66 @@
+var SamplePlayer = function (url) {
+	
+	// Fix up prefixing
+	window.AudioContext = window.AudioContext || window.webkitAudioContext;
+	var context = new AudioContext();
+
+	var sparkleBuffer = null,
+		onError = function (msg) {
+			console.log(msg);
+		},
+		loadSound = function loadSound(url) {
+			var request = new XMLHttpRequest();
+			request.open('GET', url, true);
+			request.responseType = 'arraybuffer';
+
+			// Decode asynchronously
+			request.onload = function() {
+				context.decodeAudioData(request.response, function(buffer) {
+					sparkleBuffer = buffer;
+				}, onError);
+			}
+			request.send();
+		},
+
+		playSound = function playSound(buffer) {
+			var source = context.createBufferSource(); // creates a sound source
+			source.buffer = buffer;                    // tell the source which sound to play
+			source.connect(context.destination);       // connect the source to the context's destination (the speakers)
+			source.start(0);                           // play the source now
+			                                         // note: on older systems, may have to use deprecated noteOn(time);
+		};
+
+	loadSound(url);
+
+	return {
+		play: function () {
+			if (sparkleBuffer) {
+				playSound(sparkleBuffer);
+			}
+		}
+	};
+};
+
+// set up local sound player
+var sparkle = SamplePlayer("sparkle.mp3");
+
+
 chrome.browserAction.onClicked.addListener(function(tab) {
-		
+
+
+
+	chrome.extension.onMessage.addListener(
+        function(request, sender, sendResponse) {
+            
+            if (request.play == 'sparkle') {
+				sparkle.play();
+            }
+        }
+    );
+
+
+
+
 		// start the element chooser UI
 		chrome.tabs.executeScript(null, {file:"lib/jquery.js"}, function () {
 
@@ -25,4 +86,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 				//		chrome.tabs.sendRequest(tab.id, 'cornify_page');
 				//	});
 				// });
+				// 
+				// 
 	});

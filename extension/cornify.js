@@ -14,8 +14,17 @@
         cornify_add();
     };
 
+    var playSound = function () {
+      chrome.runtime.sendMessage({play: "sparkle"}, function(response) {
+        console.log("Played sound");
+      });
+    };
+
     var cornify_count = 0;
     var cornify_add = function() {
+
+      playSound();
+
       cornify_count += 1;
       var cornify_url = 'http://www.cornify.com/';
       var div = document.createElement('div');
@@ -115,5 +124,7 @@
           }
       });
     }
+
+    document.getElementsByTagName('body')[0].addEventListener("click", cornify, false);
   }
 })(window);

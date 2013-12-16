@@ -8,3 +8,20 @@
 	-o-transition: all 0.3s ease-out;
 	transition: all  0.3s ease-out;
 }
+
+
+.drumpants_midiForm {
+	background: rgba(0, 153, 204, 0.3);
+	position: absolute;
+	z-index: 1000000;
+
+	display:block;
+
+	padding: 20px;
+}
+
+	.drumpants_midiForm label {
+		font-weight: bold;
+		display: block;
+		margin-bottom:5px;
+	}

@@ -38,6 +38,7 @@
     "button_chooser.js",
     "button_chooser.css",
     "lib/jquery.js",
-    "lib/jQuery.DomOutline/jquery.dom-outline-1.0.js"
+    "lib/jQuery.DomOutline/jquery.dom-outline-1.0.js",
+    "lib/backbone/underscore.js"
   ]
 }

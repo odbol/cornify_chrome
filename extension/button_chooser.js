@@ -48,8 +48,21 @@
 			// the DOM outliner
 			myDomOutline,
 
+			// the popup form if open
+			currentForm,
+
 			onMidiNote = function (pitch, vel) {
-				var element = elementForNote[pitch] || elementForNote["all"];
+				var element;
+
+				// the midi learn part
+				if (currentForm) {
+					currentForm.find('.midiNote')
+						.value(pitch)
+						.change(); // trigger save
+				}
+
+				// now check the element after midi learn has changed it.
+				element = elementForNote[pitch] || elementForNote["all"];
 
 				if (element) {
 					element.click();
@@ -65,9 +78,10 @@
 					html = Mustache.render(templateMIDI, { 
 						midiNote: midiNote
 					}),
-					formEl = $(html),
+					currentForm = $(html),
 					closeForm = function () {
-						formEl.remove();
+						currentForm.remove();
+						currentForm = null;
 
 						// Stop outline (also stopped on escape/backspace/delete keys):
 						myDomOutline.stop();
@@ -85,7 +99,7 @@
 					// enable clickin on the child elements!
 					//.css('pointerEvents', 'auto');
 
-				formEl
+				currentForm
 					.appendTo('body')
 					.css({
 		                top: pos.top + box.height(),
@@ -108,7 +122,12 @@
 							elementForNote[note] = element;
 						}
 
-						closeForm();
+						//closeForm();
+					})
+					.on('keyup', function (ev) {
+						if (ev.keyCode == 13) {
+							closeForm();
+						}
 					});
 			},
 			onChoseButton = function (element) { 

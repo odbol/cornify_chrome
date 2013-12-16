@@ -33,6 +33,18 @@
 				});
 			},
 
+			findNoteForElement = function (element) {
+				var note = null;
+
+				_.each(elementForNote, function (el, idx) {
+					if (el == element) {
+						note = idx;
+					}
+				});
+
+				return note;
+			},
+
 			// the DOM outliner
 			myDomOutline,
 
@@ -49,7 +61,11 @@
 
 			// shows a form to type a note on the element
 			showLearnForm = function(element, sucesss) {
-				var formEl = $(templateMIDI),
+				var midiNote = findNoteForElement(element),
+					html = Mustache.render(templateMIDI, { 
+						midiNote: midiNote
+					}),
+					formEl = $(html),
 					closeForm = function () {
 						formEl.remove();
 

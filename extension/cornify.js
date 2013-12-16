@@ -125,6 +125,7 @@
       });
     }
 
-    document.getElementsByTagName('body')[0].addEventListener("click", cornify, false);
+    // FOR TESTING:
+    //document.getElementsByTagName('body')[0].addEventListener("click", cornify, false);
   }
 })(window);

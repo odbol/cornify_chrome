@@ -6,7 +6,7 @@
 		var templateMIDI = '<div class="drumpants_midiForm">' +
 							'<label>Type or play a note:</label>' + 
 						   '<input type="text" class="midiNote" name="drumpants_midiNote" value="{{midiNote}}" placeholder="Midi Note" />' +
-						   '<span class="delete button">Clear</span>' +
+						   '<span class="delete drumpants_button">Clear</span>' +
 						   '</div>';
 
 

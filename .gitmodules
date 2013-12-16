@@ -1,0 +1,3 @@
+[submodule "extension/lib/jQuery.DomOutline"]
+	path = extension/lib/jQuery.DomOutline
+	url = https://github.com/odbol/jQuery.DomOutline.git

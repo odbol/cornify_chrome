@@ -12,7 +12,10 @@
     "default_icon": "cornify.ico"
   },
 
- 
+ "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
 
   "content_scripts": [
     {
@@ -27,5 +30,12 @@
     "https://*/*"
   ],
 
-  "web_accessible_resources": ["cornify.js", "midi.js"]
+  "web_accessible_resources": [
+    "cornify.js", 
+    "midi.js",
+
+    "button_chooser.js",
+    "lib/jquery.js",
+    "lib/jQuery.DomOutline/jquery.dom-outline-1.0.js"
+  ]
 }

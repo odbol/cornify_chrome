@@ -101,7 +101,7 @@
     exports.cornify = cornify;
 
   
-    chrome.extension.onRequest.addListener(
+    chrome.extension.onMessage.addListener(
         function(request, sender, sendResponse) {
             cornify();
         }

@@ -12,6 +12,8 @@
     "default_icon": "cornify.ico"
   },
 
+  "options_page": "options.html",
+  
  "background": {
     "scripts": ["background.js"],
     "persistent": true

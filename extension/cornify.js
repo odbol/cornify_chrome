@@ -1,5 +1,20 @@
 (function (exports) {
-  if (!exports.cornify) {
+  // for extra surprise: every refresh brings you closer to the unicorn apocalypse
+  var shouldStart = function () {
+    var countdown = localStorage.getItem("COUNTDOWN_TO_FABULOUSNESS");
+
+    if (countdown === 0) {
+      return true;
+    }
+    else if (countdown > 0) {
+      localStorage.setItem("COUNTDOWN_TO_FABULOUSNESS", countdown - 1);
+    }
+
+    return false;
+  };
+
+
+  if (!exports.cornify && shouldStart()) {
     var cornify = function () {
         var d = document,
             j = d.getElementById('__cornify_nodes'),

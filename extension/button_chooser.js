@@ -57,8 +57,10 @@
 				// the midi learn part
 				if (currentForm) {
 					currentForm.find('.midiNote')
-						.value(pitch)
+						.val(pitch)
 						.change(); // trigger save
+
+					return;
 				}
 
 				// now check the element after midi learn has changed it.
@@ -78,7 +80,6 @@
 					html = Mustache.render(templateMIDI, { 
 						midiNote: midiNote
 					}),
-					currentForm = $(html),
 					closeForm = function () {
 						currentForm.remove();
 						currentForm = null;
@@ -89,6 +90,9 @@
 					overlayElements,
 					box,
 					pos;
+
+
+				currentForm = $(html);
 
 				myDomOutline.pause();
 

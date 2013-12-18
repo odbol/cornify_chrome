@@ -42,21 +42,42 @@ var SamplePlayer = function (url) {
 };
 
 // set up local sound player
-var sparkle = SamplePlayer("sparkle.mp3");
+var sparkle = SamplePlayer("sparkle.mp3"),
+	
+	// for extra surprise: every refresh brings you closer to the unicorn apocalypse
+	shouldStart = function () {
+		var countdown = parseInt(localStorage.getItem("COUNTDOWN_TO_FABULOUSNESS"), 10);
+
+		if (countdown === 0) {
+			return true;
+		}
+		else if (countdown > 0) {
+			localStorage.setItem("COUNTDOWN_TO_FABULOUSNESS", countdown - 1);
+		}
+
+		return false;
+	};
+
+
+// enable prankotron
+chrome.extension.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        
+        if (request.play == 'sparkle') {
+			sparkle.play();
+        }
+        // request from page if it should cornify or not. triggered by number of uses
+        else if (request.checkCountdown) {
+			sendResponse({
+				shouldStart: shouldStart()
+			});
+        }
+    }
+);
 
 
 chrome.browserAction.onClicked.addListener(function(tab) {
 
-
-
-	chrome.extension.onMessage.addListener(
-        function(request, sender, sendResponse) {
-            
-            if (request.play == 'sparkle') {
-				sparkle.play();
-            }
-        }
-    );
 
 
 

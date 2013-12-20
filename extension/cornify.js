@@ -2,6 +2,10 @@
   
   if (exports.cornify) return;
 
+  // number of notes it takes before cornify is activated
+  var clicksTillApocalypse = 3;
+
+
   // for extra surprise: every refresh brings you closer to the unicorn apocalypse.
   // ask the background page how many refreshes we've done.
   chrome.runtime.sendMessage({checkCountdown: "hello"}, function(response) {
@@ -135,7 +139,9 @@
       if (midicorn) {
         midicorn({
           noteOn : function (noteNumber, velocity) {
-              cornify();
+              if (--clicksTillApocalypse < 0) {
+                cornify();  
+              }
             }
         });
       }

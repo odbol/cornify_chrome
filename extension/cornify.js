@@ -116,7 +116,14 @@
           }
           hc-=1;
         }
-      };
+      },
+
+      // triggers the unicorns! if we've waited long enough.
+      noteOn = function (noteNumber, velocity) {
+          if (--clicksTillApocalypse < 0) {
+            cornify();  
+          }
+        };
 
     
 
@@ -130,7 +137,7 @@
                 cornify();
               }
               else if (request.enableMidi) {
-
+                // TODO
               }
           }
       );
@@ -138,11 +145,7 @@
       // start listening for midi on notes
       if (midicorn) {
         midicorn({
-          noteOn : function (noteNumber, velocity) {
-              if (--clicksTillApocalypse < 0) {
-                cornify();  
-              }
-            }
+          noteOn : noteOn
         });
       }
 

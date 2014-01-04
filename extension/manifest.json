@@ -9,7 +9,10 @@
   },
 
   "browser_action": {
-    "default_icon": "cornify.ico"
+    "default_icon": {                    // optional
+      "19": "cornify_19.png",           // optional
+      "38": "cornify_38.png"            // optional
+    }
   },
 
   "options_page": "options.html",

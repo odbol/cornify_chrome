@@ -149,8 +149,10 @@
         });
       }
 
-      // FOR TESTING:
-      //document.getElementsByTagName('body')[0].addEventListener("click", cornify, false);
+      // FOR THE MIDILESS (enabled in options)
+      if (response.enableClicks) {
+        document.getElementsByTagName('body')[0].addEventListener("click", noteOn, false);
+      }
     }
   });
 })(window);

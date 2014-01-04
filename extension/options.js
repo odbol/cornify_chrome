@@ -28,17 +28,27 @@ function restore_options_input() {
   }
 }
 
+function isCheckboxInput(inputElement) {
+  return inputElement.type == 'checkbox';
+}
+
 function saveText() {
 
   $('input').each(function (i, el) {
     var key = this.id,
-        value = this.value;
+        value = this.value,
+        isCheckbox = isCheckboxInput(this);
 
-    if (!value || value.trim() === "") {
-      localStorage.removeItem(key);
+    if (isCheckbox) {
+      localStorage[key] = this.checked;
     }
     else {
-      localStorage[key] = value;
+      if (!value || value.trim() === "") {
+        localStorage.removeItem(key);
+      }
+      else {
+        localStorage[key] = value;
+      }
     }
   });
 }
@@ -46,9 +56,13 @@ function saveText() {
 function restoreText() {
   $('input').each(function (i, el) {
     var key = el.id,
-        value = localStorage[key];
+        value = localStorage[key],
+        isCheckbox = isCheckboxInput(this);
 
-    if (value) {
+    if (isCheckbox) {
+      this.checked = value;
+    }
+    else if (value) {
       this.value = value;
     }
   });

@@ -1,31 +1,63 @@
 <html>
 <head>
 
-	<title>DrumPants Settings</title>
+	<title>Unicorn Apocalypse Settings</title>
 
     <link rel="stylesheet" href="button_chooser.css" /> 
 </head>
 
-<body class="drumpants_midiForm">
+<body class="drumpants_midiForm optionsScreen">
 
-	<title>DrumPants Settings</title>
+	<title>Unicorn Apocalypse Settings</title>
 
-<label>MIDI Input:</label>
-<select id="color">
- <option value="red">Bus 1</option>
- <option value="green">Bus 2</option>
- <option value="blue">Bus 3</option>
- <option value="yellow">Bus 4</option>
-</select>
+<div class='preference'>
+	<p>Welcome! This extension will fill your screen with unicorns and rainbows every time you click the webpage or play a MIDI note. 
+		Prank your friends, or use it as a little pick-me-up to fancy up those boring webpages at work.</p>
 
-<label>Threshold <!--of faboulousness:--></label>
-<input type="text" id="COUNTDOWN_TO_FABULOUSNESS" value="" />
+	<p>The unicorns don't appear until you click/play a note several times on a webpage. This makes it more of a surprise for whoever you're pranking!</p>
 
+	<p>Note: To trigger with a MIDI instrument requires you to enable MIDI support in Chrome. Click <a href="chrome://flags">here for instructions</a>.</p>
+</div>
+
+
+<div class='preference'>
+	<label for="ENABLE_CLICKS">Trigger with Mouse Clicks</label>
+	<p class='desc'>Don't have a MIDI instrument? Trigger the unicorns every time you click!</p>
+	<input type="checkbox" id="ENABLE_CLICKS" value="true" /> Enable Mouse Control
+</div>
+
+<div class='preference'>
+	<label>MIDI Input</label>
+	<select id="color">
+	 <option value="red">Bus 1</option>
+	 <option value="green">Bus 2</option>
+	 <option value="blue">Bus 3</option>
+	 <option value="yellow">Bus 4</option>
+	</select>
+</div>
+
+<div class='preference'>
+	<label for="COUNTDOWN_TO_FABULOUSNESS">Countdown to Fabulousness</label>
+	<p class='desc'>The number of pages to load before beginning the prank. e.g.: if set to "3", the victim will have to visit 3 different websites before the prank starts. 
+	<br /><br />
+	Set to "0" to prank immediately.</p>
+	<input type="text" id="COUNTDOWN_TO_FABULOUSNESS" value="" />
+</div>
 
 
 <br>
 <div id="status"></div>
 <button class="drumpants_button" id="save">Save</button>
+
+
+<div class='preference'>
+	<label>Credits</label>
+
+	<p>Based on the <a href="https://chrome.google.com/webstore/detail/cornify/nllclfdcegpjlgoghneoieoakchddkee">Cornify! Chrome Extension</a>.</p>
+
+	<p>Modified by <a href="http://www.drumpants.com">DrumPants</a> for MIDI control, sparkle noises, and prank-friendly options. <a href="https://github.com/odbol/cornify_chrome">Source on Github</a></p>
+</div>
+
 </body>
 
 <script src="lib/jquery.js"></script>

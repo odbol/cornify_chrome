@@ -59,6 +59,28 @@ var sparkle = SamplePlayer("sparkle.mp3"),
 	};
 
 
+
+var optionsDefaults = {
+		COUNTDOWN_TO_FABULOUSNESS : 0,
+		ENABLE_CLICKS : true
+	},
+	loadOptionsDefaults = function () {
+
+		//optionsDefaults.forEach(function (i, el) {
+		for (var i in optionsDefaults) {
+			var el = optionsDefaults[i],
+				item = localStorage.getItem(i);
+
+			if (item === null) {
+				localStorage.setItem(i, el);
+			}
+		}
+	};
+
+loadOptionsDefaults();
+
+
+
 // enable prankotron
 chrome.extension.onMessage.addListener(
     function(request, sender, sendResponse) {

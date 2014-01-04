@@ -60,7 +60,8 @@ function restoreText() {
         isCheckbox = isCheckboxInput(this);
 
     if (isCheckbox) {
-      this.checked = value;
+      // localStorage always returns string, so convert it to actual boolean
+      this.checked = (value == 'true');
     }
     else if (value) {
       this.value = value;

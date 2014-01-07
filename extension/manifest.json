@@ -2,18 +2,11 @@
   "update_url":"http://clients2.google.com/service/update2/crx",
   "name": "Unicorn Apocalypse",
   "description": "Fill your screen with unicorns and rainbows every time you click. Prank your friends, or fancy up those boring webpages at work.",
-  "version": "1.1",
+  "version": "1.11",
   "manifest_version": 2,
   "icons": {
     "48": "cornify_48.png",
     "128": "cornify_128.png"
-  },
-
-  "browser_action": {
-    "default_icon": {                    
-      "19": "cornify_19.png",
-      "38": "cornify_38.png" 
-    }
   },
 
   "options_page": "options.html",

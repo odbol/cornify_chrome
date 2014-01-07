@@ -99,8 +99,11 @@ chrome.extension.onMessage.addListener(
 );
 
 
-chrome.browserAction.onClicked.addListener(function(tab) {
 
+/**** ADD MIDI LEARN SCRIPTS ****/
+// only load them if browserAction is enabled
+if (chrome.browserAction) {
+	chrome.browserAction.onClicked.addListener(function(tab) {
 
 
 
@@ -133,3 +136,4 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 				// 
 				// 
 	});
+}
